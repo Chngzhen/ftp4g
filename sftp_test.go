@@ -1,4 +1,4 @@
-package fti4g
+package ftp4g
 
 import (
 	"testing"
@@ -22,7 +22,7 @@ func TestFTPClient_RetrieveAll(t *testing.T) {
 	}
 	close(fileInfos)
 
-	for fileInfo := range fileInfos{
+	for fileInfo := range fileInfos {
 		log4g.Info("%+v", fileInfo)
 	}
 }

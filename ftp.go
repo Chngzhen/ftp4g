@@ -1,4 +1,4 @@
-package fti4g
+package ftp4g
 
 import (
 	"errors"
@@ -12,15 +12,15 @@ import (
 )
 
 type FTPClient struct {
-	connection         *goftp.Client
+	connection *goftp.Client
 	// 远程文件存放的根目录。默认：用户主目录。
-	remoteBootDir      string
+	remoteBootDir string
 	// 本地文件存放的根目录。默认：当前目录。
-	localBootDir       string
+	localBootDir string
 	// 是否在检索远程文件时创建本地目录。默认：true。
 	createAbsentParent bool
 	// 远程文件的后缀。若不指定，则检索所有文件。默认：[]。
-	filterFileExtends  []string
+	filterFileExtends []string
 }
 
 func buildFtpClient(host string, port int, username, password string) (Client, error) {
@@ -89,7 +89,7 @@ func (c *FTPClient) RetrieveAll(relativeDirPath string, ftpFileChannel chan<- *S
 				// 创建本地目录
 				var localFilePath string
 				if "" == c.localBootDir {
-					localFilePath = strings.TrimLeft(ftpFile.RelativeDir + "/" + ftpFile.Name, "/")
+					localFilePath = strings.TrimLeft(ftpFile.RelativeDir+"/"+ftpFile.Name, "/")
 				} else {
 					localFilePath = c.localBootDir + "/" + ftpFile.RelativeDir + "/" + ftpFile.Name
 				}

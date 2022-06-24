@@ -1,4 +1,4 @@
-package fti4g
+package ftp4g
 
 import (
 	"errors"
