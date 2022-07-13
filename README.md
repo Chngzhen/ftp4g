@@ -1,2 +1,2 @@
 # ftp4g
-FTP command-line script for Golang.
+FTP client wrapper for Golang.
