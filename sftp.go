@@ -28,13 +28,13 @@ func buildSftpClient(host string, port int, username, password string) (Client, 
 	sshConfig := &ssh.ClientConfig{
 		User: username,
 		Auth: []ssh.AuthMethod{
-			//ssh.KeyboardInteractive(func(_, _ string, questions []string, _ []bool) (answers []string, err error) {
-			//	answers = make([]string, len(questions))
-			//	for n := range questions {
-			//		answers[n] = password
-			//	}
-			//	return answers, nil
-			//}),
+			ssh.KeyboardInteractive(func(_, _ string, questions []string, _ []bool) (answers []string, err error) {
+				answers = make([]string, len(questions))
+				for n := range questions {
+					answers[n] = password
+				}
+				return answers, nil
+			}),
 			ssh.Password(password),
 		},
 		HostKeyCallback: ssh.InsecureIgnoreHostKey(),
